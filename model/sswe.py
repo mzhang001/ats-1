@@ -155,7 +155,7 @@ class SSWEModel(Model):
         # embeddings -> hidden
         noise_prehidden = T.dot(noise_inputs, self.hidden_weights) + \
             self.hidden_biases
-        hidden_n = T.tanh(noise_prehidden)
+        hidden_n = self.activation(noise_prehidden)
         # hidden -> output
         noise_score = T.dot(hidden_n, self.output_weights) + \
             self.output_biases
