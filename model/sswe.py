@@ -233,10 +233,10 @@ class SSWEModel(Model):
                 dnoise_inputs = dnoise_inputss[index].reshape((
                     self.window_size, self.embedding_size))
 
-                for (i, di) in zip(correct_sequence, dcorrect_inputs):
-                    self.embeddings[i] -= self.embedding_learning_rate * di
-                for (i, di) in zip(noise_sequence, dnoise_inputs):
-                    self.embeddings[i] -= self.embedding_learning_rate * di
+                for (e_i, di) in zip(correct_sequence, dcorrect_inputs):
+                    self.embeddings[e_i] -= self.embedding_learning_rate * di
+                for (e_i, di) in zip(noise_sequence, dnoise_inputs):
+                    self.embeddings[e_i] -= self.embedding_learning_rate * di
 
         self.train_cnt += len(correct_sequences)
 
